@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Week Number</title>
+
+<script type="text/javascript">
+//----------------- resizes the gadget display surface
+function DoInit() {
+    document.body.style.width = 130;
+    document.body.style.height= 67;
+    document.body.style.margin= 5;
+
+    setTimeout("location.reload(true);",15000);
+}
+
+// the new Week Number code
+/**
+* Returns the week number for this date. dowOffset is the day of week the week
+* "starts" on for your locale - it can be from 0 to 6. If dowOffset is 1 (Monday),
+* the week returned is the ISO 8601 week number.
+* @param int dowOffset
+* @return int
+*/
+Date.prototype.getWeek = function () {
+/*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.meanfreepath.com */
+/* thank you dude, for the help */
+ 
+var newYear = new Date(this.getFullYear(),0,1);
+var day = newYear.getDay() - 1; //the day of week the year begins on
+day = (day >= 0 ? day : day + 7);
+var daynum = Math.floor((this.getTime()-newYear.getTime() - (this.getTimezoneOffset()-newYear.getTimezoneOffset())*60000)/86400000) + 1;
+var weeknum;
+//if the year starts before the middle of a week
+if(day < 4)
+{
+	weeknum = Math.floor((daynum+day-1)/7) + 1;
+	if(weeknum > 52)
+	{
+		nYear = new Date(this.getFullYear() + 1,0,1);
+		nday = nYear.getDay() - 1;
+		nday = nday >= 0 ? nday : nday + 7;
+		/*if the next year starts before the middle of
+		the week, it is week #1 of that year*/
+		weeknum = nday < 4 ? 1 : 53;
+	}
+}
+else 
+{
+	weeknum = Math.floor((daynum+day -1 )/7);
+	if(weeknum == 0)
+	{
+		prevYear = new Date(this.getFullYear()-1,0,1);
+		prevDay = prevYear.getDay()-1;
+		prevDay = (prevDay >= 0 ? prevDay : prevDay + 7);
+		if( prevDay==3 || ( isLeapYear(prevYear.getFullYear()) && prevDay==2 ) )
+		{ weeknum = 53; }
+			else weeknum = 52;
+	}
+}
+return weeknum;
+};
+</script>
+
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body id="dabody" onload="DoInit();">
+<table>
+ <tr>
+	<td><a>Week Number</a>
+	</td>
+ </tr>
+ <tr>
+	<td>
+	<script type="text/javascript">
+		var mydate = new Date();
+		var weeknumber = mydate.getWeek();
+		document.write("<p>" + weeknumber + "</p>");
+	</script>
+	</td>
+ </tr>
+</table>
+</body>
+</html>

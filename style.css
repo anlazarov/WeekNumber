@@ -1,0 +1,53 @@
+/*//////////////////////////////////////////////////////////////////////////////
+//  
+//  Copyright (c) 2010 Alexander Lazarov.  All rights reserved.
+//
+//////////////////////////////////////////////////////////////////////////////*/
+
+#dabody
+{
+  background: url(background.png) no-repeat;  
+  position:absolute;
+  font-family:Segoe UI, Tahoma;
+  table-layout:fixed; 
+  scroll:no;
+  padding:0;
+  margin:0;
+  width: 130px;
+  height: 67px;
+  background-repeat:no-repeat;
+  background-position:top left;
+}
+
+a
+{
+	font-family: cursive;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-size: normal;
+	line-height: 100%;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-align: center;
+	text-indent: 0ex;
+	margin-left:5px;
+}
+
+p
+{
+	font-family: cursive;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-size: larger;
+	line-height: 100%;
+	word-spacing: normal;
+	letter-spacing: normal;
+	text-decoration: none;
+	text-transform: none;
+	text-align: center;
+	text-indent: 0ex;
+	color:white;
+
+}
